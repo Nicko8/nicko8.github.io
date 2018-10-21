@@ -1,0 +1,304 @@
+<!--  Websocket   v0.21 
+   A message interface with web socket , for prject RDM 
+      By Nicko  
+
+ -->
+<html>
+<head>
+ <meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=yes">
+ 
+<title>WebSocket client to RDM</title>
+<style>
+ html,body{
+	font:normal 0.9em arial,helvetica;
+	background-color: #FCF7EF;
+}
+ #inMemo {width:360px; height:200px; border:1px solid #7F9DB9; overflow:auto;}
+ #msg {width:300px; height:32px}
+ #recMemo {width:360px; height:280px; border:1px solid #7F9DB9; overflow:auto;}
+ 
+</style>
+<script>
+var socket;
+var REV_CHAR = "~" 
+var Last_Send_Text = ""
+var WSConnected  
+
+function init(){
+  
+  WSConnected = 0
+  //LinkToWS()
+  $("msg").focus();
+}
+ 
+ 
+function LinkToWS(){
+  //var host = "ws://192.168.2.19:30008/";
+   
+  var host = "ws://" + $("TextIP").value + ":"+ $("TextPort").value
+   
+ try{
+    socket = new WebSocket(host);
+    socket.onopen    = function(msg){ logrec("Connected"); WSConnected =1  };
+    socket.onmessage = function(msg){ logrec(msg.data); };
+    socket.onclose   = function(msg){ logrec("Lose Connection!"); WSConnected =0  };
+  }
+  catch(ex){ 
+  	log(ex); 
+  }
+  
+  $("msg").focus();
+}
+ 
+function send(){
+  var txt,msg;
+  txt = $("msg");
+  msg = txt.value;
+   
+  if(!msg){ 
+	 msg = REV_CHAR;
+  }
+  
+  sendText(msg)   
+  
+  txt.value="";
+  txt.focus();
+
+}
+
+ function sendText(msg){
+ 
+  if (WSConnected == 0) {
+    logrec("Not connected ! please connect first!")
+    return
+  }
+ 
+ if(!msg){  
+  	 return
+  }
+     if (msg != REV_CHAR) {     
+     Last_Send_Text = msg
+   }
+   
+    try{ 
+    
+  	socket.send(msg); 
+  	log(msg) 
+  } catch(ex){ 
+  	log(ex); 
+  }
+}
+
+function sendLastText() {
+  
+   sendText(Last_Send_Text)
+}
+
+
+ function filltext(t){
+ 
+  edit = $("msg");   
+  edit.value = t
+  edit.focus() 
+  
+}
+
+
+
+//run every 2 second
+window.setInterval(getRDMUpdate, 2000); 
+
+function getRDMUpdate() {
+  
+  if (WSConnected == 0) {
+    return
+  }
+
+  try {
+  sendText(REV_CHAR)
+  }
+  catch (ex) {
+  }
+  
+}
+ 
+window.onbeforeunload=function(){
+    try{ 
+        socket.send('quit'); 
+        socket.close();
+        socket=null;
+    }
+    catch(ex){ 
+        log(ex);
+    }
+};
+ 
+ 
+function $(id){ return document.getElementById(id); }
+
+function log(msg){
+   
+   if (msg == REV_CHAR) {
+     return
+   }
+	m= $("inMemo")
+	m.innerHTML= msg+ "<br>"+ m.innerHTML; 
+   // m.scrollTop = m.scrollHeight; 
+}
+
+function logrec(msg){ 
+ 
+  m = $("recMemo")
+  m.innerHTML+="<br>"+msg; 
+  m.scrollTop = m.scrollHeight; 
+  
+  // show picture    
+  if (msg.indexOf($("TextIP").value) >= 0) {
+    var ID = msg.indexOf("http://") 
+	
+	// Only accept PNG at  this moment
+    var e = msg.indexOf(".png") 
+    var url = msg.substring(ID, e+4)	
+	 
+    // for test
+	// loadPic(msg)
+	//m.innerHTML+="<br>"+url; 
+	
+	loadPic(url)
+	 
+ } 
+ 
+}
+
+function loadPic(url) {
+  // 要强行刷新 
+  //$("defPic").src= ""   no use
+  $("defPic").src= url
+ 
+ }
+ 
+
+//function setpic() {
+//  $("defPic").src= 'https://www.baidu.com/img/baidu_jgylogo3.gif'
+ 
+//}
+
+
+function onkey(event){ if(event.keyCode==13){ send(); } }
+
+ 
+ 
+function chgLinkTarget () {
+    //#alert('当 select 的内容改变时调用本函数');
+	s =  $("selTarget").value
+	e = s.indexOf(":") 	
+	//var ip = s.substring(sID, e+4)
+	$("TextIP").value = s.substring(0, e)
+	$("TextPort").value =s.substring(e+1, e+6)
+	
+	//$("TextIP").value = $("selTarget").value
+	//$("TextPort").value = "30008"
+	
+}
+
+function popTips () {
+    //#alert('当 select 的内容改变时调用本函数');
+	$("msg").value = $("selTips").value
+	 
+	
+}
+function popTips2 () {
+    //#alert('当 select 的内容改变时调用本函数');
+	$("msg").value = $("selTips2").value
+	 
+	
+}
+
+</script>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+</head> 
+ 
+ 
+<body onLoad="init()">
+   <br>
+   
+  <table width="410" border="0">
+    <tr>
+      <td width="300"><label>
+          <select name="select2" id="selTarget" onChange="chgLinkTarget()">
+            <option value="nko.shen.cl:30008" selected>Public</option>
+             <option value="freenat.win:20008">FRP</option>
+           <option value="192.168.2.8:30008">Local</option>
+            <option value="192.168.2.19:30008">Test</option>
+         </select>
+      </label>
+        <label>IP
+        <input name="text" type="text" id="TextIP" value="nko.shen.cl" size="8">
+        </label>
+        <label>Port
+        <input name="text" type="text" id="TextPort" value="30008" size="3">
+      </label></td>
+      <td width="80">  
+      <button onClick="LinkToWS()">Go</button></td> 
+      <td width="15"><a href="RDM_help.html">Help</a></td>
+    </tr>
+  </table>
+<br>
+<table width="400" border="1">
+  <tr>
+    <td width="380"><form name="form0" method="post" action="">
+      <font size="4">In messages </font>
+      <div id="recMemo"></div>
+    </form></td>
+    <td width="28" rowspan="3">
+      <!-- <label>
+        <button onClick="setpic()">test load  pic</button>
+      </label>
+     <br> -->
+      <img id="defPic" alt=""></td>
+  </tr>
+  <tr>
+    <td>
+    <input name="textbox" type="textbox" id="msg" onKeyPress="onkey(event)"/>      
+    <button onClick="send()">发送</button>   
+	
+    </P>
+        <select name="select" id="selTips" onChange="popTips()">
+          <option value="91" selected>Base</option>
+          <option value="XRP">下载中(图)</option>
+          <option value="XCP">下载完(图)</option>
+           <option value="HC">Health check</option>
+          <option value="SYS">系统信息</option>
+          
+        
+        </select>
+         <select name="select" id="selTips2" onChange="popTips2()">
+          <option value="96" selected>Adv</option>
+          <option value="RIM+1">图片模式(IP)</option>
+          <option value="RIM+0">图片模式(默认)</option>
+          <option value="FGS">FG信息</option>
+		  
+        <!-- 
+		 -->
+          <option value="SPS">脚本列表 </option>
+ 		  <option value="RESWMI">重登陆微信</option>  
+         
+         </select>
+		<button onClick="sendText('XR')">XR</button>
+        <button onClick="sendText('XC')">XC</button> &nbsp; 
+        <button onClick="sendLastText()">Again</button>
+			</td>
+ </tr>
+  <tr>
+    <td><form name="form3" method="post" action="">
+      <font size="4">Out messages </font> <br>
+      <div id="inMemo"></div>
+    </form></td>
+  </tr>
+</table>
+<br>
+<br>
+</body>
+ 
+</html>
