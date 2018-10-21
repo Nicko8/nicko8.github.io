@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=yes">
+<title>RDM Help</title>
+<style>
+body{font-family:Arial; font-size:14px;line-height:180%;padding-top: 20px;} /*总控制，可忽略此行*/
+table tr:first-child{background:#0066CC; color:#fff;font-weight:bold;} /*第一行标题蓝色背景*/
+table{border-top:1pt solid #C1DAD7;border-left:1pt solid #C1DAD7;margin: 0 auto;} 
+td{ padding:5px 10px; text-align:center;border-right:1pt solid #C1DAD7;border-bottom:1pt solid #C1DAD7;}
+tr:nth-of-type(odd){ background:#F5FAFA;} /* odd 标识奇数行，even标识偶数行 */
+tr:hover{ background: #E0F0F0;} /*鼠标悬停后表格背景颜色*/
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+<body>
+<table width='350' border='0' cellspacing='0' cellpadding='0' align='center'>
+  <tr>
+    <td width="224">分类</td>
+    <td width="217">功能</td>
+    <td width="158">命令 </td>
+  </tr>
+  <tr>
+    <td>迅雷任务</td>
+    <td>查看下载列表</td>
+    <td>XR</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>查看完成列表</td>
+    <td>XC</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>重设任务状态</td>
+    <td>RSX</td>
+  </tr>
+  <tr>
+    <td>迅雷控制</td>
+    <td>暂停所有任务</td>
+    <td>XLP-A</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>暂停指定任务</td>
+    <td>XLP+ [N]</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>重启所有任务</td>
+    <td>XLRS-A</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>重启指定任务</td>
+    <td>XLRS+</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>删除指定任务</td>
+    <td>XLDEL+</td>
+  </tr>
+ <tr>
+    <td>&nbsp;</td>
+    <td>切换简单模式</td>
+    <td>XLSPL</td>
+  </tr>
+  <tr>
+    <td>迅雷控制</td>
+    <td>退出迅雷</td>
+    <td>XLEXIT</td>
+  </tr>
+  <tr>
+    <td>重要命令</td>
+    <td>重启UVNC </td>
+    <td>RAP+1</td>
+  </tr>
+   <tr>
+    <td>&nbsp;</td>
+    <td>重启RDM</td>
+    <td>ResRDM</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>重登录WeChat</td>
+    <td>ResWMI</td>
+  </tr>  
+  <tr>
+    <td>&nbsp;</td>
+    <td>重启W socket</td>
+    <td>RWsk</td>
+  </tr>
+
+  <!--
+  <tr>
+    <td>&nbsp;</td>
+    <td>设图片返回方式<br>     
+       Def/IP/DNS/Lan/Frp</td>
+    <td>RIM+0-4</td>
+  </tr>
+  -->
+  <tr>
+    <td>系统</td>
+    <td>Health check</td>
+    <td>HC</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>系统信息</td>
+    <td>SYS</td>
+  </tr>
+  <tr>
+    <td>查看信息</td>
+    <td>公网IP</td>
+    <td>IP</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>RClient Url</td>
+    <td>RCLT</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>FRP信息</td>
+    <td>FRP</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td> QBt WebUI</td>
+    <td>WQBT</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>VNC信息</td>
+    <td>VNC</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>QQ 远程</td>
+    <td>QVNC</td>
+  </tr>
+  <tr>
+    <td>查看信息</td>
+    <td>推荐DNS</td>
+    <td>DNS</td>
+  </tr>
+  <tr>
+    <td>进程</td>
+    <td>查用户进程</td>
+    <td>PRC</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>查系统进程</td>
+    <td>9512</td>
+  </tr>
+
+  <tr>
+    <td>&nbsp;</td>
+    <td>杀进程</td>
+    <td>KPRC+</td>
+  </tr>
+  <tr>
+    <td>窗口</td>
+    <td>窗口列表</td>
+    <td>Wins</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>查看窗口截图</td>
+    <td>SWin+</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>杀窗口</td>
+    <td>KWIN+</td>
+  </tr>
+  <tr>
+    <td>命令</td>
+    <td>辅助应用</td>
+    <td>APS</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>运行辅助应用</td>
+    <td>RAP+</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>辅助脚本</td>
+    <td>SPS</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>运行辅助脚本</td>
+    <td>SP+</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>运行命令</td>
+    <td>Cmd+</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>运行命令-返回</td>
+    <td>CmdR+</td>
+  </tr>
+  <tr>
+    <td>重启</td>
+    <td>重启服务器</td>
+    <td>RebootNAS</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>取消重启</td>
+    <td>33333</td>
+  </tr>
+  <tr>
+    <td>邮件命令</td>
+    <td>重启RDM<br>/FRP/CoolQ/WSRPT</td>
+    <td>RDM-C1~C4</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>公网IP</td>
+    <td>RDM-IP</td>
+  </tr>
+  <tr>
+    <td>WMI命令</td>
+    <td>重启RDM</td>
+    <td>#RESRDM#</td>
+  </tr>
+</table>
+</div>
+</body>
+</html>
