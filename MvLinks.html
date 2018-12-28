@@ -13,7 +13,9 @@ function $(id){ return document.getElementById(id); }
 
 function SearchZZD(){
    var zzUrl,txt,url 
-   zzUrl = "https://m.zhongzimei.com/list/"
+   // zzUrl = "https://m.zhongzimei.com/list/"
+   zzUrl = "https://m.zhongzilou.com/list/"
+   
    txt = $("TextZzd").value
    url = zzUrl + txt + "/1" 
    window.open(url)
@@ -27,7 +29,7 @@ function SearchZZD(){
 <p>
 <strong>搜索</strong><br> 		
 <div> 	   
- <input class="STYLE5" type="text" name="text" id="TextZzd" size ="25" onkeydown="if(event.keyCode==13) SearchZZD() "> 
+ <input class="STYLE5" type="text" name="text" id="TextZzd" size ="25" onKeyDown="if(event.keyCode==13) SearchZZD() "> 
  <button class="STYLE5" onClick="SearchZZD()">种子帝</button>  
 	
 </div> 	 
@@ -35,7 +37,7 @@ function SearchZZD(){
 <a href="http://oabt004.com/home.html">cili001 磁力站</a>&nbsp;&nbsp; 
 <a href="http://btkitty.org">BT Kitty</a><br>
 <a href="http://btlibrary.cc/">BT Lib</a> &nbsp;&nbsp; 
-<a href="https://www.zhongzimei.com/">种子帝(PC)</a><br>
+<a href="https://www.zhongzilou.com">种子帝(PC)</a><br>
  
 <!-- 
 <a href=""> </a><br> 
@@ -44,8 +46,18 @@ function SearchZZD(){
   
 
 <p><strong>影视网站</strong>  <br>
-
-<a href="http://www.dygang.net">电影港</a>  <br>
+<base href="http://www.kankanzhan.com/" />
+<form class="searchform" method="post" autocomplete="off" action="search.php?mod=forum" onsubmit="if($('scform_srchtxt')) searchFocus($('scform_srchtxt'));">
+   
+ <input class="STYLE5" type="text" id="scform_srchtxt" name="srchtxt" size="25" maxlength="40" value="" tabindex="1" />
+  <script type="text/javascript">initSearchmenu('scform_srchtxt');$('scform_srchtxt').focus();</script> 
+ <input  type="hidden" name="searchsubmit" value="yes" />
+ <button class="STYLE5" type="submit" id="scform_submit" value="true">西西论坛</button> 
+ 
+</form>
+ 
+<a href="http://www.dygang.net">电影港</a> &nbsp;&nbsp;
+<a href="http://www.kankanzhan.com/search.php">西西论坛搜索</a>  <br>
 <a href="http://www.woaip2p.net/list-c-0-p-1/">我爱P2P(连续剧)</a>  &nbsp;&nbsp;
 <a href="http://www.panduoduo.net/">百度云盘</a> <br>
 
