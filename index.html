@@ -1,27 +1,111 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+﻿<!-- Nas web L1  v0.02 -->
+<html>
 <head>
+<!-- 
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ -->
 <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<title>XBoy Areas</title>
+<style type="text/css">
+<!--
+.STYLE1 {
+	color: #999999;
+	font-size: 12px
+}
  
-<title>Nicko pages - testing</title>
-</head>
+ 
+.STYLE4 {font-size: 16px}
+.STYLE8 {font-size: 22px;line-height:42px;}
+-->
+</style>
+
+ <script>
+function $(id){ return document.getElementById(id); }
+
+function Fanyi(){
+   var fyUrl,txt,url 
+  
+   fyUrl = "https://fanyi.baidu.com/#en/zh/"
+   
+   txt = $("textFY").value
+   url = fyUrl + txt  
+   window.open(url)
+} 
+
+  </script>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
 
 <body>
-XBoy Website
-<p>&nbsp;</p>
-<p><a href="MvLinks.html">Movie Links </a></p>
-<p><a href="ExLinks.html">Ex Links </a></p>
-<p><a href="FM953.html">FM 953 </a></p>
-<p><a href="ws.html">WebSocket</a></p>
-<p>&nbsp;</p>
- Links 
-<table width="200" border="0">
+
+ <br> 
+<!--baidu-->   
+ 
+
+<table width="503" border="0" class="STYLE8"> 
+  <tr>
+    <td>
+<form action="http://www.baidu.com/s">  
+<input class="STYLE4" type="text" name="wd" id="kw" size="27"/>  
+<input class="STYLE4" type="submit" value="百度" />  
+</form>  
+	</td> 
+  </tr>
+  
+  <tr>
+    <td><a href="Mvlinks.html">Movies 搜索</a></td>
+    
+  </tr>
+  
+ 
+  <tr>
+    <td><a href="ws.html">Connect Nas</a></td>
+    
+  </tr>
+ 
+ 
+  <tr>
+    <td><a href="ass.html">工具</a></td> 
+  </tr> 
+ 
+  <tr>
+    <td><a href="ExLinks.html">Links &amp; Skills </a></td>
+    
+  </tr>
+ 
+  <tr>
+    <td><a href="FM953.html">FM 953</a></td>
+  
+  </tr>
+ <tr>
+    <td>
+	
+	 
+<div>  
+ <input class="STYLE4" type="text" name="wd" id="textFY" size="27" onKeyDown="if(event.keyCode==13) Fanyi() ">   
+ <button class="STYLE4" onClick="Fanyi()">翻译</button>
+</div>  
+	</td>
+    
+  </tr>
+
+
+  <!--
+  <tr>
+    <td><a href="/tmp_imgs/qr.png">PR for WC-Bot! </a></td>
+    <td>&nbsp;</td>
+  </tr>
+  -->
+</table>
+ <p>
+
+ <table width="200" border="0" class="STYLE1">
   <tr>
     <td><a href="http://192.168.2.8">Lan</a></td>
     <td><a href="http://Nko.shen.cl:82">Nko.shen.cl </a></td>
   </tr>
 </table>
-  
+<p>&nbsp;</p>
 </body>
-
 </html>

@@ -1,0 +1,81 @@
+
+========= 文件系统 ===========
+df -h	查看分区挂接和空间
+findmnt 	是一个Linux内置的命令行工具，它主要用于查找挂载的文件系统状态。Findmnt可以查看到当前系统中已挂载的设备，在必要时还可进行mount或unmount操作。
+# mount | column -t 	查看挂接的分区状态
+
+
+Chmod +x file	对该文件增加执行（3种用户都添加）
+Chmod -w file	三种用户都剥夺修改功能
+Chmod +rw file	对该文件增加可读（3种用户都添加）
+Chmod +w file	除了用户组，都增加w，很奇怪
+chmod a=rw file	使该权限等于读写。（3种用户都是）
+chmod a=rwx file	相当于chmod 777 file
+	
+ls -F -l | grep '/$'	查目录列表（详情）
+ls -l | grep '^d'	查目录列表（详情）
+
+
+=========== Tools =====
+apt install <softname>	安装一个软件
+yum install <softname>	安装一个软件
+
+MC	可视文件管理器	 sudo apt install mc
+nmon监视各种资源，磁盘，cpu，内存deng	sudo apt install nmon
+mc图形化文件管理	
+# rpm -qa 	#查看所有安装的软件包
+
+
+=========  网络 ========= 
+iptables -L 	查看防火墙设置
+route -n 	查看路由表
+netstat -lntp  	查看所有监听端口
+netstat -antp 	查看所有已经建立的连接
+netstat -s	查看网络统计信息
+ 
+	
+wget命令行下载文件 （utunbu已经自带，默认下载到当前目录	
+	
+IP address Centos	/etc/sysconfig/network-scripts/ifcfg-eth0
+
+
+
+=========  用户 ========= 
+w 	可以查看当前活跃的用户列表
+who	可以查看当前用户信息
+whoami	查看当前登录用户名
+cat /etc/passwd 	可以查看所有用户的列表
+cat /etc/group 	查看用户组
+
+
+创建root 用户密码	sudo passwd root	当没有root的时候
+
+
+useradd	add an user
+userdel test	remove user
+passwd	修改自己密码
+passwd username	修改用户密码 （as root）
+   useradd增加一个用户后，不要忘了给他设置密码，不然不能登录的。
+usermod -d /home/test -G test2 test?	将test用户的登录目录改成/home/test，并加入test2组，注意这里是大G
+
+finger	用来查询一台主机上的登录账号的信息，通常会显示用户名、主目录、停滞时间、登录时间、登录Shell等信息，使用权限为所有用户。
+
+=========  服务 ========= 
+# chkconfig --list 	列出所有系统服务
+# chkconfig --list | grep on 	#列出所有启动的系统服务
+
+	Service <name> start 	启动服务
+	Service <name> status 	查看状态
+	Service <name> stop	停止服务
+	Service <name> restart 	重启服务
+	
+ps -aux ?｜grep xxx?	查看某个进程或者服务是否存在
+ls /etc/init.d	查服务列表	ubuntu 
+
+========= System ==========
+重启ubuntu	reboot	管理员
+关闭	shutdown	管理员
+	halt	 立刻关机
+	poweroff	 立刻关机
+	shutdown -h now	 立刻关机
+	shutdown -h 10 	10分钟后自动关机

@@ -1,0 +1,58 @@
+========= 命令 ===============
+  
+1  netstat 了解整体网络情况以及当前连接情况.
+	1、显示网络连接。
+	2、路由表。
+	3、网络接口信息。
+ 
+	netstat -a  显示所有连接和监听端口
+	   netstat -aon|findstr "1080" 查具体端口
+	netstat -s  查看正在使用的所有协议使用情况。
+	netstat -v  查看正在进行的工作。
+	netstat -n  以数字格式显示IP地址
+	netstat -o  显示每个连接所属的处理id 
+   
+
+2 配置路由与查看当前路由情况.
+  route [print] [add] [change] [delete]
+  
+3 路由跟踪 
+  tracert [IP]/[DNS]
+ 
+4 nslookup 域名系统诊断
+
+  nslookup n.nicko.tk 114.114.114.114
+  nslookup n.nicko.tk 119.29.29.29
+
+5 ipconfig
+  ipconfig /flushdns 刷新Dns缓存 
+  ipconfig /release 归还IP地址
+  
+6 nbtstat命令
+	该命令使用TCP/IP上的NetBIOS显示协议统计和当前TCP/IP连接，使用这个命令你可以得到远程主机的NETBIOS信息，比如用户名、所属的工作组、网卡的MAC地址等。 
+
+	nbtstat -n：用于显示寄存在本地的名字和服务程序；
+	nbtstat -c：用于显示NetBIOS名字高速缓存的内容；
+	nbtstat -r：用于清除和重新加载NetBIOS名字高速缓存；
+	nbtstat -A IP：用于通过IP显示另一台计算机的物理地址和名字列表；
+	nbtstat -s：用于列出本机连接会话清单；
+
+7 net命令
+   这个命令是网络命令中最重要的一个
+   net view /IP　查看远程主机的所以共享资源 
+   net use x: /IP/sharename 把远程主机的某个共享资源影射为本地盘符
+   net start /servername  启动远程主机上的服务
+   net stop  /servername  关闭远程主机上的服务
+   net user  
+	　　1，net user abcd 1234 /add，新建一个用户名为abcd，密码为1234的帐户，默认为user组成员。 
+	　　2，net user abcd /del，将用户名为abcd的用户删除。 
+	　　3，net user abcd /active:no，将用户名为abcd的用户禁用。 
+	　　4，net user abcd /active:yes，激活用户名为abcd的用户。 
+	　　5，net user abcd，查看用户名为abcd的用户的情况　　 
+   net localgroup 查看所有和用户组有关的信息和进行相关操作。键入不带参数的net localgroup即列出当前所有的用户组。
+   在入侵过程中，我们一般利用它来把某个帐户提升为administrator组帐户，这样我们利用这个帐户就可以控制整个远程主机了。用法：netlocalgroup roupname username /add。 　　 
+   net time  查看远程主机当前的时间
+ 
+   
+========= Info ===============
+Dnspod DNS 119.29.29.29 
