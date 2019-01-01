@@ -1,4 +1,4 @@
-<!--  Websocket   v0.21 
+<!--  Websocket   v0.22 
    A message interface with web socket , for prject RDM 
       By Nicko  
 
@@ -11,12 +11,27 @@
 <style>
  html,body{
 	font:normal 0.9em arial,helvetica;
-	background-color: #FCF7EF;
+	font-size: 12px;
 }
- #inMemo {width:360px; height:200px; border:1px solid #7F9DB9; overflow:auto;}
+  
+/*
+table{ background:#DFE3F0; 
+   border:1pt solid #F8E2C5; 
+      margin:0 auto; 
+	  font-weight:bold;border-top:1pt solid #C1DAD7;
+ }*/
+ 
+ table{border:1pt solid #C1DAD7;} 
+td{ padding:6px; text-align: left;border-right:1pt solid #C1DAD7;border-bottom:1pt solid #C1DAD7;}
+tr:nth-of-type(odd){ background:#ECEEF7;  color: #746F69; font-size: 13px; } /* odd 标识奇数行， */
+tr:nth-of-type(even){ background:#E4DAC9;font-size: 14px;      } /* even标识偶数行 */
+ 
+ 
+ #inMemo {width:360px; height:200px; border:1px solid #7F9DB9; overflow:auto; }
  #msg {width:300px; height:32px}
  #recMemo {width:360px; height:280px; border:1px solid #7F9DB9; overflow:auto;}
  
+.STYLE2 {font-size: 14px}
 </style>
 <script>
 var socket;
@@ -159,11 +174,7 @@ function logrec(msg){
 	// Only accept PNG at  this moment
     var e = msg.indexOf(".png") 
     var url = msg.substring(ID, e+4)	
-	 
-    // for test
-	// loadPic(msg)
-	//m.innerHTML+="<br>"+url; 
-	
+	  
 	loadPic(url)
 	 
  } 
@@ -196,9 +207,7 @@ function chgLinkTarget () {
 	$("TextIP").value = s.substring(0, e)
 	$("TextPort").value =s.substring(e+1, e+6)
 	
-	//$("TextIP").value = $("selTarget").value
-	//$("TextPort").value = "30008"
-	
+	 
 }
 
 function popTips () {
@@ -223,9 +232,9 @@ function popTips2 () {
 <body onLoad="init()">
    <br>
    
-  <table width="410" border="0">
+  <table width="430" border="0">
     <tr>
-      <td width="300"><label>
+      <td width="366"><label>
           <select name="select2" id="selTarget" onChange="chgLinkTarget()">
             <option value="nko.shen.cl:30008" selected>Public</option>
              <option value="freenat.win:20008">FRP</option>
@@ -233,38 +242,45 @@ function popTips2 () {
             <option value="192.168.2.19:30008">Test</option>
          </select>
       </label>
-        <label>IP
-        <input name="text" type="text" id="TextIP" value="nko.shen.cl" size="8">
+        <label><span class="STYLE2">Host</span>
+        <input name="text" type="text" id="TextIP" value="nko.shen.cl" size="10">
         </label>
-        <label>Port
-        <input name="text" type="text" id="TextPort" value="30008" size="3">
-      </label></td>
-      <td width="80">  
-      <button onClick="LinkToWS()">Go</button></td> 
-      <td width="15"><a href="RDM_help.html">Help</a></td>
+        <label><span class="STYLE2">P</span>
+        <input name="text" type="text" id="TextPort" value="30008" size="5">
+      </label>
+	  &nbsp;
+	   <button onClick="LinkToWS()">Go</button>
+      </td> 
+      <td width="52"><span class="STYLE2"><a href="RDM_help.html">Help</a></span> </td>
     </tr>
   </table>
 <br>
-<table width="400" border="1">
+<table width="430" border="0">
   <tr>
+   <td>Received messages</td>
+    <td></td>
+  </tr>
+  <tr>
+    
     <td width="380"><form name="form0" method="post" action="">
-      <font size="4">In messages </font>
+     
       <div id="recMemo"></div>
     </form></td>
-    <td width="28" rowspan="3">
+   <td width="28" rowspan="5">
       <!-- <label>
         <button onClick="setpic()">test load  pic</button>
       </label>
      <br> -->
-      <img id="defPic" alt=""></td>
+      <img id="defPic" align="top"></td>
   </tr>
   <tr>
     <td>
-    <input name="textbox" type="textbox" id="msg" onKeyPress="onkey(event)"/>      
-    <button onClick="send()">发送</button>   
-	
-    </P>
-        <select name="select" id="selTips" onChange="popTips()">
+    <input name="textbox" type="textbox" id="msg" onKeyPress="onkey(event)" size="4">      
+    <button onClick="send()">发送</button>
+	</td>   
+	<tr>
+	<td>
+	    <select name="select" id="selTips" onChange="popTips()" >
           <option value="91" selected>Base</option>
           <option value="XRP">下载中(图)</option>
           <option value="XCP">下载完(图)</option>
@@ -286,13 +302,20 @@ function popTips2 () {
          
          </select>
 		<button onClick="sendText('XR')">XR</button>
-        <button onClick="sendText('XC')">XC</button> &nbsp; 
-        <button onClick="sendLastText()">Again</button>
-			</td>
+        <button onClick="sendText('XC')">XC</button>  
+        <button onClick="sendLastText()">AG</button>
+	</td>
+	</tr>
+    
+    
+	 
  </tr>
+ <tr>
+   <td> Sent messages</td>
+  </tr>
   <tr>
     <td><form name="form3" method="post" action="">
-      <font size="4">Out messages </font> <br>
+       
       <div id="inMemo"></div>
     </form></td>
   </tr>

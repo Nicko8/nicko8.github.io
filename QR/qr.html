@@ -1,32 +1,101 @@
 ﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<title>QR Gen - 19Cloud</title>
+
+
+<style>
+ html,body{
+	font:normal 0.9em arial,helvetica;
+	/* background-color: #FCF7EF; */
+}
+ table{ border:1pt solid #F8E2C5; margin:0 auto; max-width:900px; width:99%; margin:0 auto;} 
+
+ #inText {  width: 99%; height:120px; border:1px solid #7F9DB9; }
+.STYLE3 {color: #999999; font-size:9px}
+
+ /* .textc { 
+        overflow: auto;
+        word-break: break-all; //解决兼容问题
+    }  */
+	
+ 
+</style>
+
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Qr gen - 19Cloud</title>
+
 
 <script type="text/javascript" src="jquery-1.8.0.js"></script>
 <script type="text/javascript" src="utf.js"></script>
 <script type="text/javascript" src="jquery.qrcode.js"></script>
 <script type="text/javascript">
-    $(document).ready(function() {
+  	
+function convPR (w) {
+        // alert(getByID("inText").innerHTML)
+		
+		getByID("qrcodeCanvas").innerHTML = ""
         $("#qrcodeCanvas").qrcode({
             render : "canvas",    //设置渲染方式，有table和canvas，使用canvas方式渲染性能相对来说比较好
-            text : "http://163.comm",    //扫描二维码后显示的内容,可以直接填一个网址，扫描二维码后自动跳向该链接
-            width : "200",               //二维码的宽度
-            height : "200",              //二维码的高度
+            //text : "http://163.comm",    //扫描二维码后显示的内容,可以直接填一个网址，扫描二维码后自动跳向该链接
+			text : getByID("inText").value,  
+            width : w,               //二维码的宽度
+            height : w,              //二维码的高度
             background : "#ffffff",       //二维码的后景色
-            foreground : "#000000",        //二维码的前景色
-            src: 'photo.jpg'             //二维码中间的图片
+            foreground : "#000000"        //二维码的前景色
+            //,src: 'photo.jpg'             //二维码中间的图片
         });
-    });
-</script>
+    }
+  
+function getByID(id){ return document.getElementById(id); }
 
+
+/*function test() {
+
+   alert(getByID("inText").value )
+}
+*/
+
+</script>
 </head>
 <body>
-    <center>
-      <h2>二维码生成 - 支持中文和LOGO</h2>
-      <div id="qrcodeCanvas"></div>
-    </center>
-	From :https://blog.csdn.net/xiaoyu940601/article/details/53501642
+    
+      <table width="96%" border="0">
+  <tr>
+  
+    <td width="88%" >
+	输入文字 --&gt; 二维码生成<br>
+	<br>
+	  <textarea class="textc" name="textfield" id="inText" ></textarea>	</td>
+    
+  </tr>
+  <tr>
+    <td>   
+	  <button onclick=convPR("350")>生成 小图</button>&nbsp;&nbsp;
+	  <button onclick=convPR("500")>生成 大图</button>&nbsp;&nbsp;
+	  <button onclick=convPR("800")>超大</button>	 
+	  <!--<br> <br>  <button onclick=test()>Test</button>	   -->	   </td>
+    
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>  <div id="qrcodeCanvas" align="center"></div>  </td>
+    </tr>
+  <tr>
+    <td>&nbsp;</td>
+     
+  </tr>
+  <tr>
+    <td><span class="STYLE3">Based on https://blog.csdn.net/xiaoyu940601/article/details/53501642</span></td>
+     
+  </tr>
+</table>
+	   
+      
+	<br><br>
+	
+	
 </body>
 </html> 
