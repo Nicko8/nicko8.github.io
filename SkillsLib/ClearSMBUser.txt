@@ -4,8 +4,12 @@
 　　在Windows XP系统下，可以用如下dos命令，清除登录的账户信息：
 　　【查看已记录的登录信息】
 　　C:/net use
-　　【清除记录】
+　　【清除记录】删除上一次建立的连接
 　　C:/net use //hostname/IPC$ /delete
+    -> net use \\192.168.1.102\IPC$ /delete 
+
+
+在成功删除共享连接后即可更换用户身份访问Samba服务器。
 　　譬如：c:/>net use //192.168.0.1/IPC$ /DELETE
 
 2、在WINDOWS XP中，互访的时候，有个用户登录和密码记录。那么，如何清除这个密码记录的方法？
