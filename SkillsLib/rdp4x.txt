@@ -1,0 +1,26 @@
+﻿Win7/Win10多用户同时使用远程桌面
+
+Win7/Win10正常情况下是不允许多用户同时远程的，即一个用户远程进来会把另一个用户踢掉，需要破解。 
+
+Win7：安装UniversalTermsrvPatch-x64.exe，见https://pan.baidu.com/s/1kVlCloV，直接安装即可。 
+
+Win10：安装RDPWrap-v1.6.zip，见https://pan.baidu.com/s/1i4JpVM1，下载后运行install.bat，然后运行RDPCheck.exe。如果全绿则破解成功；如果出现Listening [not supported]则还需运行update.bat。
+ 
+
+Also refer to https://blog.csdn.net/sinat_19758811/article/details/79698639
+
+RDP-Generator.exe 创建的文件还是可以的，连接过去去掉所有效果，速度很快
+
+-----------------------------
+
+安卓平板访问 windows，外接键鼠是比较成熟的
+
+有两个小问题
+1. 鼠标中键弹出 RDP界面，所以不支持按下了
+   鼠标右键也是
+   Ctrl+W 代替关闭
+2. 鼠标滚轮比较慢
+3. 两个屏幕按钮有点档  
+4. Windows key -> 用 Ctrl+ESC 代替
+5. 
+
