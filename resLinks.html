@@ -1,0 +1,151 @@
+﻿<!-- Nas web L2  v0.02 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>聚合资源 - 19Cloud</title>
+<style>
+body{font-family:Arial; font-size:20px;line-height:180%;padding-top: 3px;} /*总控制，可忽略此行*/
+ 
+table{border-top:1pt solid #C1DAD7;border-left:1pt solid #C1DAD7;margin:0 auto;} 
+td{ padding:6px; text-align: left;border-right:1pt solid #C1DAD7;border-bottom:1pt solid #C1DAD7;}
+tr:nth-of-type(odd){ background:#ECF3FB; font-size:13px;line-height:10px; color: #746F69; font-weight:bold;  } /* odd 标识奇数行， */
+tr:nth-of-type(even){                    font-size:18px;line-height:25px;} /* even标识偶数行 */
+ 
+ /*-- white-space:nowrap; not wrap */
+.table-container{max-width:900px; width:99%; margin:0 auto; }
+.title_blue { color: #0000FF; font-size:13px; visibility: hidden;}
+
+</style>
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+</head>
+
+<script src="ping.js" type="text/javascript"></script>
+<script>
+
+const LocalIP = '192.168.2.15'
+
+  // Set to 内网 if it is 
+function init() {  
+    
+  ping(LocalIP,  function(bCon)   {
+      if(bCon) {
+      
+         $('ys').style.visibility = "visible"
+         $('AList').href = 'http://192.168.2.8:30123'
+         $('Xiaoya').href = 'http://192.168.2.15:5678'
+         $('Music').href = 'http://192.168.2.15:30748/music'
+         $('QingL').href = 'http://192.168.2.15:30670'
+         $('Wrt').href = 'http://192.168.2.15'
+         $('Gfy').href = 'http://192.168.2.8:30399'
+         $('cgpt').href = 'http://192.168.2.15:30770/chat'
+      }         
+  })
+   
+}
+
+function $(id){ return document.getElementById(id); }
+
+</script>
+
+
+<body onLoad="init()">	
+<div class="table-container">
+ 
+<span class='title_blue' id='ys'>恭喜回到誉山<br></span> 
+ 
+<table width=100% border="0" >
+  <tr>
+    <td width=50%>Links</td>
+    <td> ChatGPT</td>
+  </tr>
+  <tr>
+    <td>
+      <a id='AList' href='http://ka.sino.tw:30123'>AList</a>&nbsp; &nbsp; &nbsp;    
+      <a id='Xiaoya' href='http://ka.sino.tw:23678'>小雅</a>   
+    </td>
+    <td>
+     <a id='cgpt' href="http://ka.sino.tw:30770/chat">My ChatGPT</a>  
+    </td>
+  </tr> 
+<tr>
+    <td colspan="2">杂七杂八</td>
+  </tr>
+  <tr>
+    <td>    
+    <a href="https://www.4spaces.org/">有米格(PP)</a> &nbsp; &nbsp; &nbsp;     
+    <a href="https://aliso.cc/">阿里搜</a>    
+    
+    </td>
+     <td>
+      <a href="https://zhaoziyuan.la/">找资源 - [失灵]</a> (n3g,3-1)  
+  
+    </td>
+  </tr>  
+  <tr>
+    <td colspan="2">Music</td>
+  </tr>
+  <tr>
+    <td>    
+    <a id='Music' href="http://ka.sino.tw:30748/music">音乐</a> &nbsp;&nbsp; 
+    
+    </td>
+     <td>
+    <a href="https://www.xmwav.com/">熊猫音乐</a>  
+    
+    </td>
+ </tr>
+ </tr> 
+ </tr>
+ 
+  
+  <tr>
+    <td colspan="2">其他</td>
+  </tr>
+  <tr>
+    <td> 
+    <a id='Gfy' href="http://ka.sino.tw:30399">Gotify</a> &nbsp;&nbsp;&nbsp;  
+    <a id='Wrt' href="http://ka.sino.tw:23080">OpenWrt</a>    
+   
+    </td>
+      <td>
+     <a id='QingL' href="http://ka.sino.tw:30670">青龙</a> &nbsp;&nbsp;&nbsp;
+  
+    </td>
+<tr>
+    <td colspan="2">TVBox - http://ka.sino.tw:23678/tvbox/my.json</td>
+  </tr>
+  <tr>
+    <td>  
+     <a id='jk' href="TVPorts.txt">接口</a> &nbsp;&nbsp;&nbsp;  
+    
+    </td> 
+        <td>
+    
+    </td>
+
+    </tr> 
+  
+ <tr>
+    <td colspan="2">ChatGPT </td>
+  </tr>
+  <tr>
+    <td> 
+   
+      <a href="https://replit.com/@ramonvc/freegpt-webui">Replit </a> &nbsp;&nbsp;&nbsp; 
+      <a href="https://replit.com/@ramonvc/freegpt-webui-chimera">Replit 2</a>  <br>
+      <a href="https://chat.openai.com/chat">ChatGPT in open AI</a>   
+       
+    </td>
+        <td>
+        <a href="https://huggingface.co/spaces/monra/freegpt-webui">hugging face </a>  &nbsp;&nbsp;&nbsp;
+     <a href="https://huggingface.co/spaces/monra/freegpt-webui-chimera/tree/main">hugging face 2 </a> <br> 
+   
+    </td>
+
+ </tr>  
+  
+    </table>
+</div>
+  		
+  
+
+</body></html>

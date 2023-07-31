@@ -1,0 +1,210 @@
+﻿<!-- Nas web L2  v0.06 support 多个播放器， 包括Mxplayer[支持Http同名字幕] -->
+
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title> TV 控制 - 19Cloud</title>
+<style>
+body{
+	font-family:Arial;
+	font-size:30px;
+	line-height:180%;
+	padding-top: 3px;
+	background-color: #2E2F2F;	 
+}  
+  
+ /*-- white-space:nowrap; not wrap */
+ a:link {text-decoration：none}
+.table-container{max-width:2900px; width:98%; margin:0 auto; }
+
+.STY_Title {color: #FFFFFF ;font-size: 28px;  letter-spacing: 5px}
+
+.STY_Time {color: #FFFF00; font-size: 28px;  }
+.STY_FullPath {color: #66CC33; font-size: 18px;  }
+.STY_setupLink {color: #99FFCC}
+
+.STY_PREMV {color: #33CCFF; font-size: 24px; letter-spacing: 1px; }
+.STY_Key {color: #FFBBCC; font-size: 24px; letter-spacing: 3px}
+.STY_Key2 {color: #FFBBCC; font-size: 18px; letter-spacing: 1px}
+
+ 
+.div-Time{position:absolute; text-align: center; max-width:300px; width:200; top:59%; left:44%;margin:0 auto; }
+.div-Setup{
+	position:absolute;
+	text-align: center;
+	max-width:800px;
+	width:50%;
+	top:25%;
+	left:25%;
+	margin:0 auto;
+	height: 50%;
+	background-color: #F1F3EF;
+	visibility: hidden;
+}
+
+.div-Redr{
+	position:absolute;
+	text-align: center;
+	max-width:280px;
+	width:15%;
+	top:85%;
+	left:80%;
+	margin:0 auto;
+	height: 5%;
+	background-color: #2E2F2F;
+	visibility: none;
+}
+
+
+ /*-- 
+  height: 350px;
+  width:581px; 
+  */
+  
+.SetupTitle {
+	color: #4B9926;
+	font-size: 28px;
+	font-weight: bold;
+	letter-spacing: 3px;
+}
+ 
+.P0Cancel {
+	color: #0000FF;
+	font-weight: bold;
+	font-size: 18px;
+	letter-spacing: 1px;
+}
+ 
+.OptionText {color: #0000FF; font-size: 22px; font-weight: bold;letter-spacing: 2px; }
+  
+ 
+</style>
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+
+</head>
+
+<script src="ctrlTV.js" type="text/javascript"></script>
+<script>
+  
+ 
+  
+</script>   
+
+<body>	
+<div class="table-container">
+	<table border=0 style="width:100% ;height:100%">
+	<tr><td align="center" valign="middle">
+
+<table width=100% border="0" valign="middle"> 
+   <tr>
+     <td width=50%> </td>
+    <td></td>
+  </tr>
+  <tr>
+     <td colspan="2">  <div align="center"><span class="STY_Key">① </span><span id="idTitle" class="STY_Title">Reading</span></div></td>
+    </tr>
+  <tr>
+    <td><div align="center"><img id="StatePic" src="tmp_imgs/run.png" width="400" height="300"></div></td>
+    <td> 
+        <div align="center"> 
+           <table width="466" border="0">
+          <tr>
+            <td width="140">&nbsp;</td>
+            <td width="218"><a href="temp/jmv.html" id = 'ADefPlayer'><img src="tmp_imgs/dplay.png" name="imgDefPlayer" width="218" height="218" border="0" id="imgDefPlayer"></a></td>
+            
+            <td width="94">
+             <table width=99% height=30% border="0">
+             <tr>
+               <td width="45%" valign="middle"><div align="right"><span class="STY_Key">⑦ </span></div></td> 
+               <td width="55%">
+				<div align="right"><a href="temp/jmv2.html" id = 'APlayer1'><img src="tmp_imgs/dplay.png" width="45" height="45" border="0" id="imgPlayer1"></a></div>
+			   </td>
+			</tr>
+			 <tr>
+			    <td valign="middle"><div align="right"><span class="STY_Key">⑧ </span></div></td> 
+			      <td>
+			  <div align="right"><a href="temp/jmv.html" id = 'APlayer2'><img src="tmp_imgs/XP.webp" width="45" height="45" border="0" id="imgPlayer2"></a></div>			
+			   </td>
+			  </tr>
+			  <tr>
+			   <td height="92" colspan="2" valign="bottom">
+				 <div align="right"><span class="STY_Key">⊙ </span> <a href='#' class="STY_setupLink" onClick="ShowSetup()">设置</a></div></td>
+			   </tr>
+			</table>	
+			</td>
+          </tr>
+        </table>
+      </div>
+	  </td>
+  </tr>
+ <tr>
+   <td><p>&nbsp;</p></td>
+   <td>&nbsp;</td>
+ </tr>
+  
+ <tr>
+    <td colspan="2">
+	  <div align="Left">
+	    <table width=100% border="0">
+         <tr>
+           <td width=20%>&nbsp;</td>
+           <td><span class="STY_Key">②&nbsp;</span> <span class="STY_PREMV" id='pmv' onClick="openUrl(preMVUrl)">N/A</span></td>
+         </tr>
+       </table>
+	  </div></td>
+ </tr>
+  <tr>
+    <td colspan="2">&nbsp;</td>
+    </tr>
+ <tr>
+    <td colspan="2">
+      <div align="center"><span class="STY_FullPath" id="idFullPath">n/a</span></div>	 
+    </td>
+    
+  </tr>	
+</table>
+</td></tr>
+</table>
+</div>
+<div class="div-Time" align="center"><span class="STY_Title">&#9749 &nbsp;</span><span class="STY_Time" id="tSta">N/A</span></div> 
+
+<div class="div-Redr" id='divRedr'> 
+   <span class="STY_Key2" id='swcXY' onClick='Open_Url_In_Temp_Folder()'>⑤ ➟ 用转存链打开</span> 
+</div>
+
+<div class="div-Setup" align="center" id='divSetup'>
+ <table border=1 style="width:100% ;height:100%" valign='center'>
+   <tr><td><table height="36%" border=0 style="width:100% ;height:100%"> 
+    <tr>
+      <td colspan="2"><div align="center"><span class="SetupTitle" id='stTitle'>设置默认播放器</span></div></td>
+     </tr>
+   <tr>
+      <td>&nbsp;</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td width="19%">&nbsp;</td>
+      <td width="81%"><span id='stDefPlayer'><strong>当前 xxx</strong></span>  <br>  &nbsp; </td>
+    </tr>
+ 
+    <tr>
+      <td>&nbsp;</td>
+      <td><p>
+      <a class="OptionText" onClick="setupDefPlayer(1)" id='stPlayer1'>按 ⑦ 设置 xxx</a> <br><br>
+      <a class="OptionText" onClick="setupDefPlayer(2)" id='stPlayer2'>按 ⑧ 设置 xxx</a> </p> </td>
+    </tr>
+  
+    <tr>
+      <td>&nbsp;</td>
+      <td> <br>  <br>  </td>
+    </tr>
+    <tr>
+      <td colspan="2"> 
+        <div align="center"><a class="P0Cancel" onClick="$('divSetup').style.visibility = 'hidden'">按 0 取消</a> </div></td> 
+      </tr> 
+  </table>
+  </td></tr>
+  </table>
+</div> 
+
+
+
+</body></html>

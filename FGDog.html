@@ -1,0 +1,109 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>FG Dog info</title><style>
+body{font-family:Arial; line-height:180%;padding-top: 3px;} 
+.table{border-top:1pt solid #F0EFEE;border-left:1pt solid #F0EFEE;margin:1 auto;} 
+
+td:nth-of-type(even){ padding:2px; text-align: left; line-height:18px; font-size:14px; border-right:1p9 solid #F0EFEE;border-bottom:1pt solid #F0EFEE;}
+td:nth-of-type(odd){ text-align: center;  font-size:14px;  border-right:1pt solid #F0EFEE;border-bottom:1pt solid #F0EFEE;}
+tr:nth-of-type(even){ background:#FCFBF3;  color:#315A68;} 
+tr:nth-of-type(odd){ color:#414B4B   } 
+.table-container{max-width:900px; width:99%; margin:0 auto; }
+
+.divTopLeft { 
+	float:left;
+	width:100px;
+	height:40px;
+	display:inline-block;
+}
+.divTopC { 
+	color: #0000FF;
+  font-weight: bold;
+	float:left;
+	width:80%; 
+	height:40px;
+	 font-size:20px;
+}
+
+.cTime {color: #276BAF; font-size:15px;  font-weight: lighter;}  
+ 
+
+</style>
+<meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+</head> <script>
+  
+function ReadFGStatus() {
+	var xmlHttp = null;
+	if (window.ActiveXObject) {
+		xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+	} else if (window.XMLHttpRequest) {
+		xmlHttp = new XMLHttpRequest();
+	}
+	if (xmlHttp != null) {
+	   //alert ('A3')
+		xmlHttp.open("get", "Nas_RT_Info/FGStatus.txt", true);
+		xmlHttp.setRequestHeader("If-Modified-Since", "0");
+		xmlHttp.send();
+		xmlHttp.onreadystatechange = doResult; //设置回调函数                 
+	}
+	
+	function doResult() {
+		if (xmlHttp.readyState == 4) { 
+			if (xmlHttp.status == 200) { 
+			   $("FGStatusPic").src= "tmp_imgs/" + xmlHttp.responseText + ".png"				
+			}  
+		}  
+	}
+}
+
+ function Restable() {
+	var xmlHttp = null;
+	if (window.ActiveXObject) {
+		xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+	} else if (window.XMLHttpRequest) {
+		xmlHttp = new XMLHttpRequest();
+	}
+	if (xmlHttp != null) {
+	   //alert ('A3')
+		xmlHttp.open("get", "Nas_RT_Info/FG_RT.log", true);
+		xmlHttp.setRequestHeader("If-Modified-Since", "0");
+		xmlHttp.send();
+		xmlHttp.onreadystatechange = doResult; //设置回调函数                 
+	}
+	
+	function doResult() {
+		if (xmlHttp.readyState == 4) { 
+			if (xmlHttp.status == 200) { 
+			   sLog= xmlHttp.responseText
+			   p1 = sLog.indexOf('@')
+			   p = sLog.indexOf('##')  		
+			   $('idTime').innerText = sLog.substring(0, p1)
+			   $("idTitle").innerHTML = sLog.substring(p1+1, p)
+			   $("logTable").innerHTML = sLog.substring(p+3)
+			   
+			}  
+		}  
+	}
+}
+
+function init() {
+	
+	ReadFGStatus()
+	Restable()
+}
+function $(id){ return document.getElementById(id); }
+
+</script>
+  
+<body onLoad="init()"><div class="table-container">
+<p>
+<div>
+  <div align="left" class="divTopLeft"> 
+    <img id="FGStatusPic" width=38 height=38 onClick="ReadFGStatus()"> </div>
+  <div align="center" class="divTopC"> 
+     <span class='cTime' id='idTime'>[time]</span> &nbsp;&nbsp; &nbsp;&nbsp;<span id='idTitle'>[Title]</span></div>  
+</div>
+</p>
+<table width=100% border="0" id='logTable'><tr><td width=100px>&nbsp;</td><td></td></tr>
+<tr><td>[Time]</td><td> [NONE]</td></tr>
+</table>
+</div></body></html>

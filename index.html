@@ -1,24 +1,32 @@
-﻿<!-- Nas web L1  v0.02 -->
+﻿<!-- Nas web Home v0.1 -->
 <html>
 <head>
 <!-- 
  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
  -->
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta http-equiv="Cache" content="no-cache">
+
 <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
 <title>一九云 by Honest Nicko</title>
 <style type="text/css">
  
  table{max-width:600px; width:98%;  }
-
+ body{font-family:Arial; font-size:10px;padding-top: 3px;}  
+ 
 .STYLE1 {
 	color: #999999;
-	font-size: 14px
+	font-size: 12px
 }
  
  
 .STYLE4 {font-size: 16px}
 .STYLE8 {font-size: 22px;line-height:42px;}
  
+.STYLE9 {font-size: 18px}
+.STYLE10 {color: #0000A0}
 </style>
 
  <script>
@@ -34,12 +42,57 @@ function Fanyi(){
    window.open(url)
 } 
 
+function SrhJP(){
+   var fyUrl,txt,url 
+  
+   JPUrl = "http://zhannei.baidu.com/cse/site?q="
+   
+   txt = $("textJP").value
+   url = JPUrl + txt + "&cc=52pojie.cn" 
+   window.open(url)
+} 
+
+ 
+  
+  function ReadFGStatus() {
+	
+	//1.声明异步请求对象：
+	 
+	var xmlHttp = null;
+	if (window.ActiveXObject) {
+		// IE6, IE5 浏览器执行代码
+		xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+	} else if (window.XMLHttpRequest) {
+		// IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+		xmlHttp = new XMLHttpRequest();
+	}
+	 
+	//2.如果实例化成功，就调用open（）方法：
+	if (xmlHttp != null) {
+	   //alert ('A3')
+		xmlHttp.open("get", "Nas_RT_Info/FGStatus.txt", true);
+		xmlHttp.setRequestHeader("If-Modified-Since", "0");
+		xmlHttp.send();
+		xmlHttp.onreadystatechange = doResult; //设置回调函数                 
+	}
+	
+	function doResult() {
+		//alert ('A4')
+		if (xmlHttp.readyState == 4) { //4表示执行完成
+			if (xmlHttp.status == 200) { //200表示执行成功. Apache 可以成功，本地不行
+				//document.getElementById("resText").innerHTML =  xmlHttp.responseText; 
+			   $("FGStatusPic").src= "tmp_imgs/" + xmlHttp.responseText + ".png"
+				//alert (xmlHttp.responseText)
+			}  
+		}  
+	}
+}
   </script>
 
 
 </head>
 
-<body>
+<body onLoad="ReadFGStatus()">
 
  <br> 
 <!--baidu-->   
@@ -51,52 +104,66 @@ function Fanyi(){
 <form action="http://www.baidu.com/s">  
 <input class="STYLE4" type="text" name="wd" id="kw" size=26/>  
 <input class="STYLE4" type="submit" value="百度" />  
-</form>  
-	</td> 
+</form>	</td> 
   </tr>
   
-  <tr>
-    <td><a href="findMv.html">Movies 搜索</a></td>
-    
-  </tr>
-  
- 
-  <tr>
-    <td><a href="ws.html">Connect Nas</a></td>
-    
-  </tr>
- 
- 
-  <tr>
-    <td><a href="tools.html">工具</a></td> 
-  </tr> 
- 
-  <tr>
-    <td><a href="links.html">Links &amp; Skills </a></td>
-    
-  </tr>
- 
-  <tr>
-    <td><a href="sto.html">STO</a></td>
-  
-  </tr>
-   <tr>
-    <td> </td>
-  
-  </tr>
- <tr>
+<tr>
     <td>
 	
 	 
 <div>  
+ <input class="STYLE4" type="text" name="wd" id="textJP" size="22" onKeyDown="if(event.keyCode==13) SrhJP() ">   
+ <button class="STYLE4" onClick="SrhJP()">吾爱破解</button>
+</div>	</td>
+  </tr>  
+  <tr>
+ 	<td> 
+ 	  <a href="https://replit.com/@ramonvc/freegpt-webui">ChatGPT 2</a>  
+   </td> 	
+ 			</tr>
+  <tr>
+    <td>
+      <a href="findMv.html">电影</a> &nbsp;&nbsp;
+       <span class="STYLE10"><a href='resLinks.html'">聚合资源</a></span> &nbsp; &nbsp; 
+           
+       </td>
+  </tr>
+   
+ 
+
+  <tr>
+    <td><a href="tools.html">工具</a> &nbsp; &nbsp;
+    <a href="links.html">Links</a> &nbsp; &nbsp;    	
+    	<a href="share.html">分享</a></td> 
+  </tr> 
+ 
+ 
+ 
+  <tr>
+    <td> 
+    	<a href="tvClient.html">TV Client</a>  
+     </td>
+  </tr>
+   <tr>
+    <td> 
+    	<a href="stock.html">Stocks</a>&nbsp;&nbsp;
+        </td>
+  </tr> <tr>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>
+	
+ <form id="form1" runat="server">
+   <span class="STYLE9"><a href='FGDog.html'>FG 状态</a>&nbsp; </span> <img id="FGStatusPic" width=34 height=34 align="top">
+  &nbsp; <input type="button" value="刷新" onClick="ReadFGStatus()"/>
+  </form>
+		 
+<div>  
  <input class="STYLE4" type="text" name="wd" id="textFY" size="26" onKeyDown="if(event.keyCode==13) Fanyi() ">   
  <button class="STYLE4" onClick="Fanyi()">翻译</button>
-</div>  
-	</td>
-    
-  </tr>
-
-
+</div>	</td>
+  </tr> 
   <!--
   <tr>
     <td><a href="/tmp_imgs/qr.png">PR for WC-Bot! </a></td>
@@ -105,18 +172,20 @@ function Fanyi(){
   -->
 </table>
  <p>
- <br>
 <table width="98%" border="0" class="STYLE1">
   <tr>
-    <td width="174"><a href="CLinks.html">Cloud Links</a> </td>
-    <td width="1412"></td>
+    <td width="100">
+	<a href="https://nicko8.github.io/">On GitHub</a>	</td>
+    <td width="393">
+	   19Could power @2019-2023 v1.1</td>
   </tr>
   <tr>
-  <td colspan="2"><br>
-   19Could power @2023 v1.03    </td>
+    <td width="100">
+	<a href="http://nko.k.vu/">To site</a>	</td>
+    <td></td>
   </tr>
-</table>
    
-	
+</table>
+ 
 </body>
 </html>
